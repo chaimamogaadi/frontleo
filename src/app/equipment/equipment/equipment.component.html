@@ -1,0 +1,130 @@
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Equipment List</h3>
+        <button class="btn btn-primary btn-sm position-absolute top-0 end-0 m-3 rounded-circle"
+        style="width: 132px; height: 52px"
+        (click)="openAddModal()">
+        <i class="fas fa-plus">Add Equipment</i>
+        </button>
+          
+      </div>
+      <div class="card-body">
+        <table class="table table-hover table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th>CapEx Type</th>
+              <th>Equipment Description</th>
+              <th>Supplier</th>
+              <th>Price 2022</th>
+              <th>Price 2023</th>
+              <th>Price 2024</th>
+              <th>Increase/Year</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let equipment of equipments">
+              <td>{{ equipment.entCapExType }}</td>
+              <td>{{ equipment.equipmentDescription }}</td>
+              <td>{{ equipment.supplier }}</td>
+              <td>{{ equipment.unitPriceMinus2 }}</td>
+              <td>{{ equipment.unitPriceMinus1 }}</td>
+              <td>{{ equipment.unitPrice }}</td>
+              <td>{{ equipment.priceIncreasePerYear }}%</td>
+              <td>
+                <button class="btn btn-sm btn-info me-2" (click)="openEditModal(equipment)">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" (click)="deleteEquipment(equipment.id)">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <!-- Equipment Modal -->
+    <div class="modal fade" id="equipmentModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ isEditing ? 'Edit Equipment' : 'Add Equipment' }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form (ngSubmit)="saveEquipment()">
+            <div class="container">
+                <!-- Row 1 -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="capexType" class="form-label">CapEx Type</label>
+                      <input id="capexType" type="text" class="form-control" [(ngModel)]="currentEquipment.entCapExType" name="entCapExType" required>
+                    </div>
+                  </div>
+              
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="description" class="form-label">Description</label>
+                      <input id="description" type="text" class="form-control" [(ngModel)]="currentEquipment.equipmentDescription" name="equipmentDescription" required>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Row 2 -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="supplier" class="form-label">Supplier</label>
+                      <input id="supplier" type="text" class="form-control" [(ngModel)]="currentEquipment.supplier" name="supplier" required>
+                    </div>
+                  </div>
+              
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="unitPriceMinus2" class="form-label">Unit Price 2022</label>
+                      <input id="unitPriceMinus2" type="number" class="form-control" [(ngModel)]="currentEquipment.unitPriceMinus2" name="unitPriceMinus2" required>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Row 3 -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="unitPriceMinus1" class="form-label">Unit Price 2023</label>
+                      <input id="unitPriceMinus1" type="number" class="form-control" [(ngModel)]="currentEquipment.unitPriceMinus1" name="unitPriceMinus1" required>
+                    </div>
+                  </div>
+              
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="unitPrice" class="form-label">Unit Price 2024</label>
+                      <input id="unitPrice" type="number" class="form-control" [(ngModel)]="currentEquipment.unitPrice" name="unitPrice" required>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Row 4 -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="priceIncrease" class="form-label">Price Increase Per Year (%)</label>
+                      <input id="priceIncrease" type="number" class="form-control" [(ngModel)]="currentEquipment.priceIncreasePerYear" name="priceIncreasePerYear" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">{{ isEditing ? 'Update' : 'Save' }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

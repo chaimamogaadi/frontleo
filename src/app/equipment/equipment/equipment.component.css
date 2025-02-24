@@ -1,0 +1,118 @@
+/* Page Container */
+.container {
+    padding: 20px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #2C3E50; /* Dark theme to match the sidebar */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Header */
+.card-header {
+    background-color: #34495E;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    border-bottom: none;
+    position: relative;
+}
+
+/* Add Button */
+.btn-primary {
+    background-color: #3498db;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* Table Styling */
+.table {
+    margin-top: 15px;
+    color: white;
+}
+
+.table thead {
+    background-color: #1F2D3D;
+    color: #ffffff;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Table Borders */
+.table-bordered th,
+.table-bordered td {
+    border-color: #566573;
+}
+
+/* Action Buttons */
+.btn-info {
+    background-color: #1ABC9C;
+    border: none;
+}
+
+.btn-info:hover {
+    background-color: #16A085;
+}
+
+.btn-danger {
+    background-color: #E74C3C;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #C0392B;
+}
+
+/* Modal Styling */
+.modal-content {
+    background-color: #34495E;
+    color: white;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #566573;
+}
+
+.modal-footer {
+    border-top: 1px solid #566573;
+}
+
+/* Form Styling */
+.form-label {
+    color: #ecf0f1;
+    font-weight: bold;
+}
+
+.form-control {
+    background-color: #2C3E50;
+    color: white;
+    border: 1px solid #3498db;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #2980b9;
+    background-color: #34495E;
+    outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-primary {
+        width: 100%;
+    }
+}

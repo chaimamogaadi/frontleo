@@ -1,0 +1,256 @@
+<div class="industrialization-form">
+  <!-- Project Information Card -->
+  <div class="card project-card">
+    <div class="card-header">
+      <h3>Project Information</h3>
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="label-cell">Project:</div>
+        <div class="input-cell">
+          <input id="project" type="text" formControlName="project" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label-cell">Customer:</div>
+        <div class="input-cell">
+          <input id="customer" type="text" formControlName="customer" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label-cell">Derivative:</div>
+        <div class="input-cell">
+          <input id="derivative" type="text" formControlName="derivative" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label-cell">Max. Kapazität Linie Fzg/Tag:</div>
+        <div class="input-cell">
+          <input id="maxKapazitaet" type="text" formControlName="maxKapazitaet" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Equipment Readiness Dates Card -->
+  <div class="card dates-card">
+    <div class="card-header">
+      <h3>Dates for Equipment readiness</h3>
+    </div>
+    <div class="card-body">
+      <table class="dates-table">
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A-Samples</td>
+            <td>
+              <input type="date" formControlName="aSampleDate" class="form-control">
+            </td>
+          </tr>
+          <tr>
+            <td>B-Samples</td>
+            <td>
+              <input type="date" formControlName="bSampleDate" class="form-control">
+            </td>
+          </tr>
+          <tr>
+            <td>C-Samples</td>
+            <td>
+              <input type="date" formControlName="cSampleDate" class="form-control">
+            </td>
+          </tr>
+          <tr>
+            <td>SOP</td>
+            <td>
+              <input type="date" formControlName="sop" class="form-control">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Status Information Card -->
+  <div class="card status-card">
+    <div class="card-header">
+      <h3>Status Information</h3>
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="label-cell">ProductionConceptResponsible:</div>
+        <div class="input-cell">
+          <input id="productionConceptResponsible" type="text" formControlName="productionConceptResponsible" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label-cell">Drawing Status:</div>
+        <div class="input-cell">
+          <input id="drawingStatus" type="text" formControlName="drawingStatus" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label-cell">Date:</div>
+        <div class="input-cell">
+          <input id="date" type="date" formControlName="date" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-container">
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="plant">Plant</label>
+        <input id="plant" type="text" formControlName="plant" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="sverweis">Sverweis</label>
+        <input id="sverweis" type="text" formControlName="sverweis" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="equipment">Equipment</label>
+        <select [(ngModel)]="selectedEquipment" name="equipment">
+          <option value="" disabled selected>Select Equipment</option>
+          <option *ngFor="let equipment of equipmentList" [value]="equipment.equipmentDescription">
+              {{ equipment.equipmentDescription }}
+          </option>
+      </select>
+      
+      </div>
+      
+      
+      <div class="form-field">
+        <label for="usedInIndustrialization">Used In Industrial.</label>
+        <input id="usedInIndustrialization" type="text" formControlName="usedInIndustrialization" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="newInvest">New Invest</label>
+        <input id="newInvest" type="text" formControlName="newInvest" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="relocation">Relocation</label>
+        <input id="relocation" type="text" formControlName="relocation" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="availableInPlant">Available In Plant</label>
+        <input id="availableInPlant" type="text" formControlName="availableInPlant" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="pricePerPiece">Price Per Piece</label>
+        <input id="pricePerPiece" type="number" formControlName="pricePerPiece" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="qty">Quantity</label>
+        <input id="qty" type="number" formControlName="qty" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="sum">Sum</label>
+        <input id="sum" type="number" formControlName="sum" class="form-input" readonly>
+      </div>
+      <div class="form-field">
+        <label for="pamNumber">PAM Number</label>
+        <input id="pamNumber" type="text" formControlName="pamNumber" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="pamRequestDate">PAM Request Date</label>
+        <input id="pamRequestDate" type="date" formControlName="pamRequestDate" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="pamReleaseDate">PAM Release Date</label>
+        <input id="pamReleaseDate" type="date" formControlName="pamReleaseDate" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="daysForPam">Days For PAM</label>
+        <input id="daysForPam" type="number" formControlName="daysForPam" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="sopMinus2Invest">SOP Minus 2 Invest</label>
+        <input id="sopMinus2Invest" type="number" formControlName="sopMinus2Invest" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="sopMinus1Invest">SOP Minus 1 Invest</label>
+        <input id="sopMinus1Invest" type="number" formControlName="sopMinus1Invest" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="sopInvest">SOP Invest</label>
+        <input id="sopInvest" type="number" formControlName="sopInvest" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="sopPlus1Invest">SOP Plus 1 Invest</label>
+        <input id="sopPlus1Invest" type="number" formControlName="sopPlus1Invest" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="verantWortlich">Verantwortlich</label>
+        <input id="verantWortlich" type="text" formControlName="VerantWortlich" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="orderNumber">Order Number</label>
+        <input id="orderNumber" type="number" formControlName="orderNumber" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="budgetReleased">Budget Released</label>
+        <input id="budgetReleased" type="number" formControlName="budgetReleased" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="orderPrice">Order Price</label>
+        <input id="orderPrice" type="number" formControlName="orderPrice" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="orderDate">Order Date</label>
+        <input id="orderDate" type="date" formControlName="orderDate" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="latestOrderDate">Latest Order Date</label>
+        <input id="latestOrderDate" type="date" formControlName="latestOrderDate" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="leadTimeWeeks">Lead Time (Weeks)</label>
+        <input id="leadTimeWeeks" type="number" formControlName="leadTimeWeeks" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="transportationTimeWeeks">Transport Time</label>
+        <input id="transportationTimeWeeks" type="number" formControlName="transportationTimeWeeks" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="installationTimeWeeks">Install Time</label>
+        <input id="installationTimeWeeks" type="number" formControlName="installationTimeWeeks" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="targetDate">Target Date</label>
+        <input id="targetDate" type="date" formControlName="targetDate" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="realDeliveryDate">Real Delivery Date</label>
+        <input id="realDeliveryDate" type="date" formControlName="realDeliveryDate" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="confirmedDeliveryDate">Confirmed Date</label>
+        <input id="confirmedDeliveryDate" type="date" formControlName="confirmedDeliveryDate" class="form-input">
+      </div>
+      <div class="form-field">
+        <label for="projectPhase">Project Phase</label>
+        <input id="projectPhase" type="text" formControlName="projectPhase" class="form-input">
+      </div>
+      <div class="form-field full-width">
+        <label for="comment">Comment</label>
+        <textarea id="comment" formControlName="Comment" class="form-input" rows="3"></textarea>
+      </div>
+    </div>
+     <!-- Submit Button -->
+  <div class="form-footer">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </div>
+  
+</div>
